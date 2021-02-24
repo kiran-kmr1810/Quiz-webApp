@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import fire from './config/fire.js';
+import fire from './config/fire';
 import Login from './login.js'
 import Home from './home.js'
 class App extends Component{
