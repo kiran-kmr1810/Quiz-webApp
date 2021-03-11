@@ -1,30 +1,45 @@
 import React , { Component } from "react";
 import fire from "./config/fire";
+import firebase from 'firebase';
 
 class Login extends Component{
+
+state={
+        email : "",
+        password : "",
+        role : ""
+}
 constructor(props)
 {
     super(props);
     this.login = this.login.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.state={
-        email : "",
-        password : ""
-    }
 }
+
 login(e){
     e.preventDefault();
-    fire.auth().signInWithEmailAndPassword(this.state.email,this.state.password).then((u)=>{
-        console.log(u)
+    fire.auth().signInWithEmailAndPassword(this.state.email,this.state.password).then(async(u)=>
+    {   
+        //console.log(u)
+        var uid =  await firebase.auth().currentUser.uid
+        await fetch(`http://localhost:5003/login/uid/${uid}`)
+        .then((response) => response.json()) 
+        .then((role) => {
+            window.user = {role : role}
+            this.props.loadrole();
+        });
     }).catch((err)=>{
         console.log(err);
     })
 }
+
+
 handleChange(e){
     this.setState({
         [e.target.name] : e.target.value
     })
 }
+
 render()
 {
     return(

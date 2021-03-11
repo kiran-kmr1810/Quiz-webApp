@@ -1,6 +1,8 @@
 const express = require("express")
 const Login = require('../models/login.model');
-const router = express.Router();
+const router = express();
+var cors = require("cors")
+router.use(cors());
 
 //Read operation
 router.route("/").get((req, res) => {
@@ -33,6 +35,7 @@ router.route('/:id').get((req, res) => {
 
 //Read by uid or any other value in a document
 //change uid and you are good to go
+//here it will return the role of that person with that specific UID
 router.route('/uid/:uid').get((req, res) => {
 Login.findOne({'uid': req.params.uid}, function(err,obj) { 
 	res.json(obj.role); });

@@ -1,20 +1,31 @@
-import React, { Component } from 'react';
+import React, { Component ,useState ,useEffect } from 'react';
 import fire from './config/fire';
-import Login from './login.js'
-import Home from './home.js'
+import Login from './login.js';
+import Fhome from './faculty/fhome.js';
+import Shome from './student/shome';
+import {BrowserRouter as Router , Switch , Route} from 'react-router-dom';
+
 class App extends Component{
+
+  state={
+    user : {},
+    role : {}
+  }
   constructor(props)
   {
     super(props);
-    this.state={
-      user : {}
-    }
   }
-  componentDidMount()
-  {
+
+  componentDidMount = async () => {
     this.authListener();
+    console.log(this.state.role);
   }
-  authListener(){
+
+  loadrole(){
+    this.setState({role : window.user.role});
+  }
+
+  authListener = async() =>{
     fire.auth().onAuthStateChanged((user)=>{
       if(user)
       {
@@ -28,9 +39,29 @@ class App extends Component{
 
   render(){
     return (
-      <div className="App">
-        {this.state.user ? (<Home/>) : (<Login/>)}
-      </div>
+        <div className="App">
+          {(() => {
+        if (this.state.user) {
+          if(this.state.role === "faculty"){
+            return (
+            <div><Fhome/></div>
+          )}
+          else if (this.state.role === "student") {
+            return (
+              <div><Shome/></div>
+            )
+          } else {
+            return (
+              <div><Login loadrole = {this.loadrole.bind(this)}/></div>
+            )
+          }
+        }else {
+          return (
+            <div><Login loadrole = {this.loadrole.bind(this)}/></div>
+          )
+        } 
+      })()}
+        </div>
     );
   }
 }
