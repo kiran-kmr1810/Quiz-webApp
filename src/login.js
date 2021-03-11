@@ -1,14 +1,27 @@
 import React , { Component } from "react";
 import fire from "./config/fire";
 import firebase from 'firebase';
+import { Button} from "@chakra-ui/react"
+import log from './Animation/log.svg'
+import {
+    Box,
+    Flex,
+    Link,
+    FormControl,
+    FormLabel,
+    Input,
+    Stack,
+    Checkbox,
+  } from '@chakra-ui/react'
 
 class Login extends Component{
 
 state={
         email : "",
         password : "",
-        role : ""
+        role : "",
 }
+
 constructor(props)
 {
     super(props);
@@ -34,9 +47,9 @@ login(e){
 }
 
 
-handleChange(e){
+handleChange(name,value){
     this.setState({
-        [e.target.name] : e.target.value
+        [name] : value
     })
 }
 
@@ -44,26 +57,60 @@ render()
 {
     return(
         <div>
+            <Flex minHeight='100vh' width='full' align='center' justifyContent='space-around' bg="grey" >
+            <Box >
+            <img src={log} width = '600px' Height = '600px' />
+            </Box>
+            <Box 
+                borderWidth={1}
+                px={4}
+                width='full'
+                maxWidth='500px'
+                borderRadius={4}
+                textAlign='center'
+                boxShadow='lg'
+                bg = "white"
+            >
+            <Box my={6} px={6} textAlign='left'>
             <form>
-                <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="enter email address"
-                onChange={this.handleChange}
+            <FormControl id="email">
+                <FormLabel>Email address</FormLabel>
+                <Input
+                type ='email' 
+                placeholder='Enter your email address' 
+                onChange = { (a) => this.handleChange("email",a.target.value)} 
                 value={this.state.email}
                 />
-                <input
-                name="password"
-                type= "password"
-                onChange={this.handleChange}
-                id="password"
-                placeholder="enter password"
-                value={this.state.password}
-                />
-                <button onClick={this.login}>Login</button>
-            </form>
+            </FormControl>
 
+            <FormControl mt={4}>
+                <FormLabel>Password</FormLabel>
+                <Input 
+                type='password' 
+                placeholder='Enter your password'
+                onChange = { (a) => this.handleChange("password",a.target.value)} 
+                value={this.state.password}
+                 />
+            </FormControl>
+
+            <Stack isInline justifyContent='space-between' mt={4}>
+                {/*<Box>
+                    <Checkbox>Remember Me</Checkbox>
+                </Box>*/}
+                <Box>
+                    <Link color ="teal">Forgot your password?</Link>
+                </Box>
+            </Stack>
+
+            <Button colorScheme = "purple"
+                onClick={this.login}  
+                width='full' 
+                mt={4}
+                >LOG IN</Button>
+            </form>
+            </Box>
+            </Box>
+            </Flex>
         </div>
     )
 }
