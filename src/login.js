@@ -11,8 +11,7 @@ import {
     FormLabel,
     Input,
     Stack,
-    Checkbox,
-  } from '@chakra-ui/react'
+} from '@chakra-ui/react'
 
 class Login extends Component{
 
@@ -57,6 +56,8 @@ render()
 {
     return(
         <div>
+            <Box bg="blackAlpha.800" px={4} height = '30px'>
+            </Box>
             <Flex minHeight='100vh' width='full' align='center' justifyContent='space-around' bg="grey" >
             <Box >
             <img src={log} width = '600px' Height = '600px' />
