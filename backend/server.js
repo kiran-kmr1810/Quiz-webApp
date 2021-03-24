@@ -10,6 +10,10 @@ const studentrouter = require('./routes/student');
 const facultyrouter = require('./routes/faculty');
 const quizrouter = require('./routes/quiz');
 const questionrouter = require('./routes/question');
+const resultrouter = require('./routes/result');
+const sectionrouter = require('./routes/section');
+const subjectrouter = require('./routes/subject');
+const feedbackrouter = require('./routes/feedback');
 
 const url = `mongodb+srv://kk:kk@cluster0.gjovc.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 
@@ -38,5 +42,9 @@ app.use('/student',studentrouter);
 app.use('/faculty',facultyrouter);
 app.use('/quiz',quizrouter);
 app.use('/question',questionrouter);
+app.use('/result',resultrouter);
+app.use('/subject',subjectrouter);
+app.use('/section',sectionrouter);
+app.use('/feedback',feedbackrouter);
 
 
