@@ -5,11 +5,6 @@ var cors = require("cors")
 router.use(cors());
 
 //Read operation
-router.route("/").get((req, res) => {
-	Quiz.find()
-	.then(login => res.json(login))
-	.catch(err => res.status(400).json('Errors '+err));
-});
 
 
 //Create operation

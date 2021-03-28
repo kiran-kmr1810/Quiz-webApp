@@ -18,7 +18,6 @@ const quizschema = new mongoose.Schema({
     },
     duration:{ 
         type : Number,
-        required : true
     },
     courseid:{
         type : String,

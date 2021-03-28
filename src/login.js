@@ -3,6 +3,7 @@ import fire from "./config/fire";
 import firebase from 'firebase';
 import { Button} from "@chakra-ui/react"
 import log from './Animation/log.svg'
+import Navbar from './components/navbar'
 import {
     Box,
     Flex,
@@ -56,11 +57,9 @@ render()
 {
     return(
         <div>
-            <Box bg="blackAlpha.800" px={4} height = '30px'>
-            </Box>
-            <Flex minHeight='100vh' width='full' align='center' justifyContent='space-around' bg="grey" >
+            <Flex minHeight='94vh' width='full' align='center' justifyContent='space-around' bg="grey" >
             <Box >
-            <img src={log} width = '600px' Height = '600px' />
+            <img src={log} width = '500px' Height = '500px' />
             </Box>
             <Box 
                 borderWidth={1}

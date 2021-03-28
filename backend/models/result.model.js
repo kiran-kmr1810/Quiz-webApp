@@ -14,7 +14,7 @@ const resultschema = new mongoose.Schema({
         required : true
     },
     grade:{ 
-        type : string ,
+        type : String ,
         required : true
     },
     result:{

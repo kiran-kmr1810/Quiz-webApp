@@ -29,7 +29,6 @@ const questionschema = new mongoose.Schema({
     },
     co:{ 
         type : String ,
-        required : true
     },
     mark:{
         type : Number,

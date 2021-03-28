@@ -3,7 +3,8 @@ import fire from './config/fire';
 import Login from './login.js';
 import Fhome from './faculty/fhome.js';
 import Shome from './student/shome';
-import {BrowserRouter as Router , Switch , Route} from 'react-router-dom';
+import  { Redirect } from 'react-router-dom'
+
 
 class App extends Component{
 
@@ -44,20 +45,25 @@ class App extends Component{
         if (this.state.user) {
           if(this.state.role === "faculty"){
             return (
-            <div><Fhome/></div>
+              <Redirect to='/fhome'  />
           )}
           else if (this.state.role === "student") {
             return (
-              <div><Shome/></div>
+              <Redirect to='/shome'  />
             )
           } else {
             return (
-              <div><Login loadrole = {this.loadrole.bind(this)}/></div>
+              <div>
+              <Login loadrole = {this.loadrole.bind(this)}/>
+              </div>
             )
           }
         }else {
           return (
-            <div><Login loadrole = {this.loadrole.bind(this)}/></div>
+            <div>
+            <Login loadrole = {this.loadrole.bind(this)}/>   
+            </div>
+            
           )
         } 
       })()}
