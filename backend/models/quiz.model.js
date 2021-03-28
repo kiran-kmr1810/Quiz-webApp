@@ -1,14 +1,32 @@
 const mongoose = require('mongoose');
 
+
+var questions = new mongoose.Schema({
+  question:String,
+  questionType:{
+    type : String,
+    default : "text"
+  },
+  answerSelectionType:{
+    type : String,
+    default : "single"
+  },
+  answers:Array,
+  correctAnswer:Number,
+  explanation:String,
+  point:Number,
+})
+
 const quizschema = new mongoose.Schema({
-    qid:{
+    quizTitle:{
       type : String,
       required : true
     },
-    name: {
+    quizSynopsis: {
       type : String,
       required : true
     },
+    questions:[questions],
     date:{
         type: Date,
         default: Date.now,
@@ -21,12 +39,8 @@ const quizschema = new mongoose.Schema({
     },
     courseid:{
         type : String,
-        required : true
     },
-    questionids:{
-        type : Array,
-        required : true
-    }
+    
   });
 
 const Quiz = mongoose.model('Quiz', quizschema);

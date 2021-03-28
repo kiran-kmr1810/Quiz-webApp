@@ -5,49 +5,29 @@ var cors = require("cors")
 router.use(cors());
 
 //Read operation
+router.route("/").get((req, res) => {
+	Quiz.find()
+	.then(login => res.json(login))
+	.catch(err => res.status(400).json('Errors '+err));
+});
 
+router.route('/quizname/:quizTitle').get((req, res) => {
+	Faculty.findOne({'quizTitle': req.params.quizTitle}, function(err,obj) { 
+		res.json(obj); });
+});
 
 //Create operation
 router.route('/add').post((req, res) => {
-	const qid = req.body.qid;
-	const name = req.body.name;
-    const date = req.body.date;
-    const starttime = req.body.starttime;
-    const duration = req.body.duration;
-    const courseid = req.body.courseid;
-    const questionids = req.body.questionids;
-    //date.toDateString();
+	const quizTitle = req.body.quizTitle;
+	const quizSynopsis = req.body.quizSynopsis;
+    const questions = req.body.questions;
 
-	const newQuiz = new Quiz({qid,name,date,starttime,duration,courseid,questionids});
+	const newQuiz = new Quiz({quizTitle,quizSynopsis,questions});
   
 	newQuiz.save()
 	  .then(() => res.json('Quiz added!'))
 	  .catch(err => res.status(400).json('Error: ' + err));
   });
 
-
-//Read by id (id is specified by mongodb and we wont mostly use that)
-router.route('/:id').get((req, res) => {
-	Quiz.findById(req.params.id)
-	.then(login => res.json())
-	.catch(err => res.status(400).json('Errors '+err));
-});
-
-
-//Read by uid or any other value in a document
-//change uid and you are good to go
-//here it will return the role of that person with that specific UID
-router.route('/qid/:qid').get((req, res) => {
-Quiz.findOne({'qid': req.params.qid}, function(err,obj) { 
-	res.json(obj); });
-});
-
-
-//Delete by id
-router.route('/delete/:id').delete((req, res) => {
-	Quiz.findByIdAndDelete(req.params.id)
-	  .then(() => res.json('User deleted.'))
-	  .catch(err => res.status(400).json('Error: ' + err));
-  });
 
 module.exports = router

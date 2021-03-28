@@ -16,6 +16,15 @@ const Form = () => {
         mark:''
       },
       ]);
+    const [quiz,setquiz] = useState(
+      [
+        {
+          qid:'',
+          name:'',
+          courseid:''
+        }
+      ]
+    )
 
     const handleSubmit = (e) => {
         console.log("InputFields", inputFields);
