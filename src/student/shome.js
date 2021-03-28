@@ -1,10 +1,11 @@
 import React , { Component } from "react";
 import fire from "../config/fire";
-import Navbar from '../components/navbar';
 import Quizblockcluster from "../components/quizblockcluster"
+import Quizwindow from '../quizlogic/quizwindow'
 import {
     Box, Button,  
 } from '@chakra-ui/react'
+
 
 class Shome extends Component{
 
@@ -27,6 +28,7 @@ render()
 {
     return(
         <div>
+            <Quizwindow/>
             <Button onClick={this.logout}>LOGout</Button>
         </div>
     )

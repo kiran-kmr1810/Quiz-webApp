@@ -3,8 +3,8 @@ import { Input,Stack,Button,InputLeftAddon,InputGroup,HStack,Center, Box } from 
 import { v4 as uuidv4 } from 'uuid';
 
 const Form = () => {  
-    const [inputFields, setInputFields] = useState([
-        {
+    const [inputFields, setInputFields] = useState(
+      [{
         id: uuidv4(),
         question: '' ,
         oa:'',
