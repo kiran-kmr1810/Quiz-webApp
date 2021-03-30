@@ -12,7 +12,7 @@ var questions = new mongoose.Schema({
     default : "single"
   },
   answers:Array,
-  correctAnswer:Number,
+  correctAnswer:String,
   explanation:String,
   point:Number,
 })

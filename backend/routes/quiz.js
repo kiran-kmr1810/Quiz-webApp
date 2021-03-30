@@ -12,8 +12,14 @@ router.route("/").get((req, res) => {
 });
 
 router.route('/quizname/:quizTitle').get((req, res) => {
-	Faculty.findOne({'quizTitle': req.params.quizTitle}, function(err,obj) { 
+	Quiz.findOne({'quizTitle': req.params.quizTitle}, function(err,obj) { 
 		res.json(obj); });
+});
+
+router.route('/:id').get((req, res) => {
+	Quiz.findById(req.params.id)
+	.then(login => res.json(login))
+	.catch(err => res.status(400).json('Errors '+err));
 });
 
 //Create operation

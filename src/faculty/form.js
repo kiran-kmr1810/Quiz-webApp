@@ -3,31 +3,35 @@ import { Input,Stack,Button,InputLeftAddon,InputGroup,HStack,Center, Box } from 
 import { v4 as uuidv4 } from 'uuid';
 
 const Form = () => {  
-    const [inputFields, setInputFields] = useState(
+    var [inputFields, setInputFields] = useState(
       [{
         id: uuidv4(),
         question: '' ,
+        answers:[],
         oa:'',
         ob:'',
         oc:'',
         od:'',
-        answer:'',
+        correctAnswer:'',
         explanation:'',
-        mark:''
+        point:''
       },
       ]);
-    const [quiz,setquiz] = useState(
-      [
-        {
-          qid:'',
-          name:'',
-          courseid:''
-        }
-      ]
-    )
+    const [quizTitle, setquizTitle] = useState();
+    const [quizSynopsis, setquizSynopsis] = useState();
 
-    const handleSubmit = (e) => {
-        console.log("InputFields", inputFields);
+    const handleSubmit = (e) =>{
+      const output = {
+        "quizTitle": quizTitle,
+        "quizSynopsis": quizSynopsis,
+        "questions" : inputFields,  
+      }
+
+      inputFields.forEach((item) => {
+        var arr = [item.oa,item.ob,item.oc,item.od];
+        item.answers = arr
+      });
+      console.log(output);
     };
     
     const handleChangeInput = (id, event) => {
@@ -45,13 +49,14 @@ const Form = () => {
         setInputFields([...inputFields, { 
             id: uuidv4(),
             question: "" ,
+            answers:[],
             oa:"",
             ob:"",
             oc:"",
             od:"",
-            answer:"",
+            correctAnswer:"",
             explanation:"",
-            mark:""
+            point:""
          }])
       }
 
@@ -68,18 +73,15 @@ const Form = () => {
       <Stack spacing={3}> 
 
         <InputGroup W='700px'>   
-        <InputLeftAddon children="Quiz ID" borderColor='black'/> 
-        <Input type="text" focusBorderColor="black" borderColor='black' name="Quiz id" id="Qid" />
-        </InputGroup>
-
-        <InputGroup W='700px'>   
-        <InputLeftAddon children="Quiz Name" borderColor='black'/> 
-        <Input type="text" focusBorderColor="black" borderColor='black' name="Name" id="name" />
+        <InputLeftAddon children="quizTitle" borderColor='black'/> 
+        <Input type="text" focusBorderColor="black" borderColor='black' 
+        name="quizTitle" onChange={e => setquizTitle(e.target.value)}/>
         </InputGroup>
 
         <InputGroup W='700px'>      
-        <InputLeftAddon children="Course ID" borderColor='black'/> 
-        <Input type="text" focusBorderColor="black" borderColor='black' name="course id" id="courseid" />
+        <InputLeftAddon children="quizSynopsis" borderColor='black'/> 
+        <Input type="text" focusBorderColor="black" borderColor='black' 
+        name="quizSynopsis"onChange={e => setquizSynopsis(e.target.value)}  />
         </InputGroup>
 
         <div className="App">
@@ -105,7 +107,9 @@ const Form = () => {
                 placeholder="Option A"
                 borderColor='black'
                 value={inputField.oa}
-                onChange={event => handleChangeInput(inputField.id, event)}
+                onChange={
+                  event => handleChangeInput(inputField.id, event)
+                }
                 />
 
                 <Input
@@ -139,11 +143,11 @@ const Form = () => {
                 <Box>
 
                 <Input
-                name = "answer"
+                name = "correctAnswer"
                 type="text"
                 placeholder="Correct Option"
                 borderColor='green'
-                value={inputField.answer}
+                value={inputField.correctAnswer}
                 onChange={event => handleChangeInput(inputField.id, event)}
                 />
 
@@ -157,11 +161,11 @@ const Form = () => {
                 />
 
                 <Input
-                name = "mark"
+                name = "point"
                 type="text"
                 placeholder="Marks"
                 borderColor='black'
-                value={inputField.mark}
+                value={inputField.point}
                 onChange={event => handleChangeInput(inputField.id, event)}
                 />
 
