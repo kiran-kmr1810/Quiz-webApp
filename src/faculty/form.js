@@ -1,6 +1,7 @@
 import React, { useState } from 'react'; 
 import { Input,Stack,Button,InputLeftAddon,InputGroup,HStack,Center, Box } from "@chakra-ui/react"
 import { v4 as uuidv4 } from 'uuid';
+import axios from 'axios';
 
 const Form = () => {  
     var [inputFields, setInputFields] = useState(
@@ -32,6 +33,11 @@ const Form = () => {
         item.answers = arr
       });
       console.log(output);
+      axios.post(`http://localhost:5003/quiz/add`, output)
+      .catch(error => {
+        this.setState({ errorMessage: error.message });
+        console.error('There was an error!', error);
+    });
     };
     
     const handleChangeInput = (id, event) => {
