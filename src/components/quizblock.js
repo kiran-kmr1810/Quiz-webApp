@@ -2,7 +2,7 @@ import {
     Box
 } from '@chakra-ui/react'
 
-export default function Quizblock() {
+export default function Quizblock(props) {
     return(
         <div>
             <Box as="button" bg="purple.500"  h='150px' w = '150px' >
@@ -15,7 +15,7 @@ export default function Quizblock() {
                 color="black"
                 isTruncated
                 >
-                QUIZ 1
+                {props.quizTitle}
                 </Box>
                 <Box
                 mt="1"
@@ -25,7 +25,7 @@ export default function Quizblock() {
                 color="white"
                 isTruncated
                 >
-                15CSE199
+                {props.quizSynopsis}
                 </Box>
             </Box>
         </div>
