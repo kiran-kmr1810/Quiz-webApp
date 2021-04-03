@@ -3,8 +3,6 @@ import Quizwindow from '../quizlogic/quizwindow'
 import fire from "../config/fire";
 import Quizblock from "../components/quizblock";
 import { Box, Center ,SimpleGrid, Text} from '@chakra-ui/layout';
-import axios from "axios";
-
 
 class Shome extends Component{
 
@@ -19,7 +17,7 @@ constructor(props)
 }
 
 async componentDidMount() {
-    fetch(`http://localhost:5003/quiz/`)
+    fetch(`http://localhost:5003/quiz/60620fe3714df209202c56ac`)
     .then(response => response.json())
     .then(data => this.setState({ data:data,loading:false }));
 }
@@ -52,7 +50,7 @@ render()
         :<div>
         <Text>Student Quiz portal</Text>
           <Box py='100px'>
-            <Center>
+            {/*<Center>
             <SimpleGrid columns={3} spacing={5}>
             {this.state.data.map((quiz) => (
             <Quizblock
@@ -62,7 +60,8 @@ render()
             />
             ))}
             </SimpleGrid>
-            </Center>
+            </Center>*/}
+            <Quizwindow quiz = {this.state.data}/>
           </Box>
         </div>
       );

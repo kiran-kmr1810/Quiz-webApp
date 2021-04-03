@@ -1,7 +1,6 @@
 import React , { Component } from "react";
 import fire from "../config/fire";
 import Navbar from '../components/navbar';
-import Quizblockcluster from "../components/quizblockcluster"
 import {
     Button,
     Spacer,
@@ -33,7 +32,7 @@ render()
 {
     return(
         <div>
-           <h1>Faculty Home Page</h1>
+           <h1>Faculty home portal</h1>
            <Link to='/createquiz' > 
            <Button bg='black' color='white'>CREATE QUIZ</Button>
            </Link>

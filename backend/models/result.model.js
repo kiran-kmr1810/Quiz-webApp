@@ -1,26 +1,26 @@
 const mongoose = require('mongoose');
 
+var result = new mongoose.Schema({
+  quizTitle:{
+    type : String,
+    required : true
+  },
+  mark: {
+    type : Number,
+    required : true
+  }
+})
+
 const resultschema = new mongoose.Schema({
-    sid:{
+    email:{
       type : String,
       required : true
     },
-    qid: {
+    uid:{
       type : String,
       required : true
     },
-    mark:{
-        type : Number,
-        required : true
-    },
-    grade:{ 
-        type : String ,
-        required : true
-    },
-    result:{
-        type : String,
-        required : true
-    }
+    results : [result]
   });
 
 const Result = mongoose.model('Result', resultschema);
