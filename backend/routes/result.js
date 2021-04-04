@@ -42,5 +42,4 @@ Result.findOne({'uid': req.params.uid}, function(err,obj) {
 });
 
 
-
 module.exports = router
