@@ -1,8 +1,6 @@
 import React, {Component } from 'react'; 
 import Quiz from 'react-quiz-component';
 
-
-
 function Quizwindow(props){
 
 const onCompleteAction = (obj) => {

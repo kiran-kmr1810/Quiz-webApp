@@ -1,7 +1,9 @@
-import React , { Component , useState,useEffect } from "react";
+import React , { Component } from "react";
 import fire from "../config/fire";
 import Quizblock from "../components/quizblock";
 import { Box, Center ,SimpleGrid, Text} from '@chakra-ui/layout';
+import { BrowserRouter as Router, Link } from "react-router-dom";
+import { Button } from "@chakra-ui/button";
 
 class Shome extends Component{
 
@@ -60,6 +62,11 @@ render()
             </SimpleGrid>
             </Center>
           </Box>
+          <Center>
+            <Link to = '/'>
+              <Button>Logout</Button>
+            </Link>
+          </Center>
         </div>
       );
 }

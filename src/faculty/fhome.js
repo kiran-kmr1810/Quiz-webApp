@@ -36,6 +36,11 @@ render()
            <Link to='/createquiz' > 
            <Button bg='black' color='white'>CREATE QUIZ</Button>
            </Link>
+           <Spacer/>
+           <Spacer/>
+           <Link to = '/'>
+              <Button>Logout</Button>
+            </Link>
         </div>
     )
 }
