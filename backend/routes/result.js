@@ -15,10 +15,9 @@ router.route("/").get((req, res) => {
 //Create operation
 router.route('/add').post((req, res) => {
 	const email = req.body.email;
-	const results = req.body.results;
 	const uid = req.body.uid;
 
-	const newResult = new Result({email,results,uid});
+	const newResult = new Result({email,uid});
   
 	newResult.save()
 	  .then(() => res.json('Result details added!'))
@@ -37,9 +36,11 @@ router.route('/:id').get((req, res) => {
 //Read by uid or any other value in a document
 //change uid and you are good to go
 //here it will return the role of that person with that specific UID
-router.route('/email/:email').get((req, res) => {
-Result.findOne({'email': req.params.email}, function(err,obj) { 
+router.route('/uid/:uid').get((req, res) => {
+Result.findOne({'uid': req.params.uid}, function(err,obj) { 
 	res.json(obj); });
 });
+
+
 
 module.exports = router

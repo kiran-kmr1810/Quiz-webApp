@@ -1,5 +1,4 @@
 import React , { Component , useState,useEffect } from "react";
-import Quizwindow from '../quizlogic/quizwindow'
 import fire from "../config/fire";
 import Quizblock from "../components/quizblock";
 import { Box, Center ,SimpleGrid, Text} from '@chakra-ui/layout';
@@ -11,13 +10,12 @@ constructor(props)
     super(props)
     this.state = { 
         data: [],
-        quizzy: [],
         loading: true
     };
 }
 
 async componentDidMount() {
-    fetch(`http://localhost:5003/quiz/60620fe3714df209202c56ac`)
+    fetch(`http://localhost:5003/quiz`)
     .then(response => response.json())
     .then(data => this.setState({ data:data,loading:false }));
 }
@@ -50,7 +48,7 @@ render()
         :<div>
         <Text>Student Quiz portal</Text>
           <Box py='100px'>
-            {/*<Center>
+            <Center>
             <SimpleGrid columns={3} spacing={5}>
             {this.state.data.map((quiz) => (
             <Quizblock
@@ -60,8 +58,7 @@ render()
             />
             ))}
             </SimpleGrid>
-            </Center>*/}
-            <Quizwindow quiz = {this.state.data}/>
+            </Center>
           </Box>
         </div>
       );
