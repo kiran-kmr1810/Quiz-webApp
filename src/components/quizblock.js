@@ -1,8 +1,8 @@
 import {
     Box
 } from '@chakra-ui/react'
-import React , { Component , useState,useEffect } from "react";
-import Quizwindow from '../quizlogic/quizwindow'
+import React  from "react";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 
 class Quizblock extends React.Component {
 
@@ -28,10 +28,20 @@ _onButtonClick() {
         showComponent: true,
       });
 }
-  
+ 
 render() {
     return(
         <div>
+            {(this.state.showComponent && !this.state.loading)?
+             <>
+             </>
+             :
+             <Link to = {{
+                pathname:'/quiz',
+                aboutProps:{
+                    questions :this.state.data
+                }
+            }}>
             <Box as="button" bg="purple.500"  h='150px' w = '150px' 
             onClick = {this._onButtonClick}
             >
@@ -57,10 +67,8 @@ render() {
                 {this.props.quizSynopsis}
                 </Box>
             </Box>
-            {(this.state.showComponent && !this.state.loading)?
-                <Quizwindow quiz = {this.state.data}/> :
-                null
-            }
+            </Link>
+}
         </div>
     );
 }

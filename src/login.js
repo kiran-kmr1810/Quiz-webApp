@@ -3,7 +3,6 @@ import fire from "./config/fire";
 import firebase from 'firebase';
 import { Button} from "@chakra-ui/react"
 import log from './Animation/log.svg'
-import Navbar from './components/navbar'
 import {
     Box,
     Flex,

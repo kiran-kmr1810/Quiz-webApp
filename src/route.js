@@ -5,6 +5,7 @@ import shome from './student/shome';
 import fhome from './faculty/fhome';
 import Createquiz from './faculty/createquiz';
 import Navbar from './components/navbar'
+import Attendquiz from './quizlogic/attendquiz';
 
 function path(){
     return (
@@ -16,7 +17,7 @@ function path(){
                 <Route path="/shome" exact component = {shome} />
                 <Route path="/fhome" exact component = {fhome} />
                 <Route path="/createquiz" exact component = {Createquiz} />
-                <Route path="/quiz" exact component = {fhome} />
+                <Route path="/quiz" exact component = {Attendquiz} />
                 <Route path="/result" exact component = {fhome} />
                 </Switch>
             </div>

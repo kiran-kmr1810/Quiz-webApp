@@ -1,8 +1,6 @@
 import React, { Component ,useState ,useEffect } from 'react';
 import fire from './config/fire';
 import Login from './login.js';
-import Fhome from './faculty/fhome.js';
-import Shome from './student/shome';
 import  { Redirect } from 'react-router-dom'
 
 
