@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Input,Stack,Button,InputLeftAddon,InputGroup,HStack,Center, Box } from "@chakra-ui/react"
 import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
+import  { Link } from 'react-router-dom'
 
 const Form = () => {  
     var [inputFields, setInputFields] = useState(
@@ -187,8 +188,8 @@ const Form = () => {
         </div>
         
         <Button W='700px' color='white' bg ='purple.500' onClick={() => handleAdd()}> + ADD QUESTION</Button>
-        <Button W='700px' color='white' bg ='black' onClick={() => handleSubmit()}>SUBMIT AND CREATE QUIZ</Button>  
- 
+        <Link to = '/fhome'>
+        <Button W='700px' color='white' bg ='black' onClick={() => handleSubmit()}>SUBMIT AND CREATE QUIZ</Button>  </Link>
       </Stack>    
     </form>  
     </Center>

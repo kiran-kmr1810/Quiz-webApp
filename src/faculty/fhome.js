@@ -4,8 +4,6 @@ import Navbar from '../components/navbar';
 import {
     Button,
     Spacer,
-    Grid,
-    Text
 } from '@chakra-ui/react'
 import  { Link } from 'react-router-dom'
 

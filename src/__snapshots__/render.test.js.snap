@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<a
+  className="chakra-link css-1u8qly9"
+  page="http://localhost:3000/"
+>
+  Quizzy
+</a>
+`;
+
+exports[`renders correctly 2`] = `
+<a
+  className="chakra-link css-1u8qly9"
+  page="http://localhost:3000/shome"
+>
+  shome
+</a>
+`;
+
+exports[`renders correctly 3`] = `
+<a
+  className="chakra-link css-1u8qly9"
+  page="http://localhost:3000/fhome"
+>
+  fhome
+</a>
+`;
+
+exports[`renders correctly 4`] = `
+<a
+  className="chakra-link css-1u8qly9"
+  page="http://localhost:3000/createquiz"
+>
+  createquiz
+</a>
+`;
+
+exports[`renders correctly 5`] = `
+<a
+  className="chakra-link css-1u8qly9"
+  page="http://localhost:3000/quiz"
+>
+  quiz
+</a>
+`;
