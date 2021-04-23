@@ -56,7 +56,7 @@ render()
 {
     return(
         <div>
-            <Flex minHeight='94vh' width='full' align='center' justifyContent='space-around' bg="grey" >
+            <Flex minHeight='94vh' width='full' align='center' justifyContent='space-around' bg="orange.600" >
             <Box >
             <img src={log} width = '500px' Height = '500px' />
             </Box>
@@ -97,14 +97,18 @@ render()
                     <Checkbox>Remember Me</Checkbox>
                 </Box>*/}
                 <Box>
-                    <Link color ="teal">Forgot your password?</Link>
+                    <Link color ="orange.400">Forgot your password?</Link>
                 </Box>
             </Stack>
 
-            <Button colorScheme = "purple"
+            <Button bgColor = "orange.400"
                 onClick={this.login}  
                 width='full' 
                 mt={4}
+                _hover={{
+                    bg:"black",
+                    color:"orange.400"
+                    }}
                 >LOG IN</Button>
             </form>
             </Box>

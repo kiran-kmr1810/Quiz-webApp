@@ -1,4 +1,4 @@
-import React, { Component ,useState ,useEffect } from 'react';
+import React, { Component} from 'react';
 import fire from './config/fire';
 import Login from './login.js';
 import  { Redirect } from 'react-router-dom'

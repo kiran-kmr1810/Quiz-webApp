@@ -42,16 +42,27 @@ render() {
                     questions :this.state.data
                 }
             }}>
-            <Box as="button" bg="purple.500"  h='150px' w = '150px' 
+            <Box
+            as="button"
+            //color="white"
+            fontWeight="bold"
+            borderRadius="md"
+            //bgGradient= "linear(to-r, red.500, yellow.500)"
+            bgColor = "orange.400"
             onClick = {this._onButtonClick}
+            _hover={{
+                bg:"Black",
+            }}
+            h = "130px"
+            w = "200px"
             >
-                <Box
+            <Box
                 mt="1"
                 fontWeight="bold"
                 fontSize='2xl'
                 as="h2"
                 lineHeight="tight"
-                color="black"
+                color="white"
                 isTruncated
                 >
                 {this.props.quizTitle}

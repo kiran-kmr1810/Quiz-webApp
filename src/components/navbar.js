@@ -1,24 +1,30 @@
-import logo from '../Animation/logo.PNG'
 import {
     Box,
     Avatar,
     HStack,
     Spacer,
     Button,
+    Text,
 } from '@chakra-ui/react'
 
 export default function Navbar() {
 return(
-<Box bg="black" px={4} height = '50px'>
+<div>
+<Box 
+//bgGradient= "linear(to-r, red.500, yellow.500)" 
+bg='black'
+px={4} height = '50px'>
 <HStack spacing="24px"py = '10px'>
-    <img src={logo} width = '90px' Height = '90px' />
+    <Text color='orange.400' size='md' fontSize= '22' fontFamily='sans-serif'letterSpacing='widest' fontWeight='extrabold'>QUIZZY</Text>
     <Spacer />
     <Button size = 'md' color = 'white' variant="link"> HOME </Button>
-    <Button size = 'md' color = 'white' variant="link"> ABOUT </Button>
+    <Button size = 'md' color = 'orange.400' variant="link"> ABOUT </Button>
     <Button size = 'md' color = 'white' variant="link"> MARKS </Button>
 
-    <Avatar bg="purple.500" size = "sm"/>
+    <Avatar bgColor='orange.400' size = "sm"/>
 </HStack>
 </Box>
+<Box bgColor='orange.400' h='3px' w='100%'/>
+</div>
 );
 }
