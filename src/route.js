@@ -8,7 +8,8 @@ import Navbar from './components/navbar'
 import Attendquiz from './quizlogic/attendquiz';
 import rough from './rough';
 import About from './about';
-import Profile from './components/profile';
+import admin from './admin/admin';
+
 
 function path(){
     return (
@@ -19,6 +20,7 @@ function path(){
                 <Route path="/" exact component = {App} />
                 <Route path="/shome" exact component = {shome} />
                 <Route path="/fhome" exact component = {fhome} />
+                <Route path="/admin" exact component = {admin} />
                 <Route path="/createquiz" exact component = {Createquiz} />
                 <Route path="/quiz" exact component = {Attendquiz} />
                 <Route path="/result" exact component = {fhome} />

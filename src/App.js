@@ -49,7 +49,12 @@ class App extends Component{
             return (
               <Redirect to='/shome'  />
             )
-          } else {
+          } else if(this.state.role === "admin"){
+            return(
+              <Redirect to='/admin'  />
+            )
+          }
+          else {
             return (
               <div>
               <Login loadrole = {this.loadrole.bind(this)}/>

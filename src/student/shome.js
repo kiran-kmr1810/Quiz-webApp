@@ -115,32 +115,39 @@ render()
             
             </Box>
             </HStack>
-            <Box h='200px' w='100%' bg='black' py='75px'>
+            </VStack>
+          </Box>
+          <Box h='100px' w='100%' bg='black' py='25px'>
               <Center>
               <HStack spacing='250px'>
                 <Button  bgColor='black' color='white'
                 _hover={{
-                bg:"white",
+                bg:"black",
                 color:"orange.400"
                 }}>
                 MY MARKS</Button>
+              
+                <Link to = '/about'>
                 <Button  bgColor='black' color='white'
                 _hover={{
-                bg:"white",
+                bg:"black",
                 color:"orange.400"
                 }}>
                 ABOUT ME</Button>
+                </Link>
+
+                <Link to = '/'>
                 <Button  bgColor='black' color='white'
                 _hover={{
-                bg:"white",
+                bg:"black",
                 color:"orange.400"
                 }}>
                 LOGOUT</Button>
+                </Link>
+
               </HStack>
               </Center>
             </Box>
-            </VStack>
-          </Box>
         </div>
       );
 }

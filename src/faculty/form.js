@@ -1,10 +1,11 @@
 import React, { useState } from 'react'; 
-import { Input,Stack,Button,InputLeftAddon,InputGroup,HStack,Center, Box } from "@chakra-ui/react"
+import { Input,Stack,Button,InputLeftAddon,InputGroup,HStack,Center, Box,useToast  } from "@chakra-ui/react"
 import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
 import  { Link } from 'react-router-dom'
 
 const Form = () => {  
+    const toast = useToast()
     var [inputFields, setInputFields] = useState(
       [{
         id: uuidv4(),
@@ -73,7 +74,12 @@ const Form = () => {
         setInputFields(values);
     }
 
-  return (     
+  return ( 
+    <div>
+    <Box padding='20px'>
+    <Link to = '/fhome'>
+      <Button color='white' bg ='black'_hover={{bg:"black",color:"orange.400"}}>RETURN TO HOMEPAGE</Button>
+    </Link>
     <Box padding='20px'>   
     <Center>
     <form>     
@@ -186,14 +192,25 @@ const Form = () => {
             </div>   
             ))}
         </div>
-        
-        <Button W='700px' color='white' bg ='purple.500' onClick={() => handleAdd()}> + ADD QUESTION</Button>
-        <Link to = '/fhome'>
-        <Button W='700px' color='white' bg ='black' onClick={() => handleSubmit()}>SUBMIT AND CREATE QUIZ</Button>  </Link>
+        <Button W='700px' color='white' bgColor = "orange.400" _hover={{bg:"black",color:"orange.400"}} 
+        onClick={() => handleAdd()}> + ADD QUESTION</Button>
+
+        <Center>
+        <Button W='700px' color='white' bg ='black'_hover={{bg:"black",color:"orange.400"}} 
+        onClick={() =>  {toast({
+          title: "Quiz created.",
+          description: "We've created the quiz for you.",
+          status: "success",
+          duration: 2000,
+          isClosable: true,
+        });handleSubmit();}}>SUBMIT AND CREATE QUIZ</Button>
+        </Center>
       </Stack>    
     </form>  
     </Center>
     </Box> 
+    </Box>
+    </div>
   );
 }; 
 export default Form;
