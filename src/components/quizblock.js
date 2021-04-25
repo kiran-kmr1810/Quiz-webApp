@@ -44,16 +44,14 @@ render() {
             }}>
             <Box
             as="button"
-            //color="white"
             fontWeight="bold"
             borderRadius="md"
-            //bgGradient= "linear(to-r, red.500, yellow.500)"
             bgColor = "orange.400"
             onClick = {this._onButtonClick}
             _hover={{
                 bg:"Black",
             }}
-            h = "130px"
+            h = "100%"
             w = "200px"
             >
             <Box
@@ -76,6 +74,36 @@ render() {
                 isTruncated
                 >
                 {this.props.quizSynopsis}
+                </Box>
+                <Box
+                mt="1"
+                as="h5"
+                fontSize='sm'
+                lineHeight="tight"
+                color="white"
+                isTruncated
+                >
+                Topic : {this.props.topic}
+                </Box>
+                <Box
+                mt="1"
+                as="h4"
+                fontSize='sm'
+                lineHeight="tight"
+                color="white"
+                isTruncated
+                >
+                Course : {this.props.course}
+                </Box>
+                <Box
+                mt="1"
+                as="h4"
+                fontSize='sm'
+                lineHeight="tight"
+                color="white"
+                isTruncated
+                >
+                Duration: {this.props.duration}
                 </Box>
             </Box>
             </Link>

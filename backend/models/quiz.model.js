@@ -28,19 +28,29 @@ const quizschema = new mongoose.Schema({
     },
     questions:[questions],
     date:{
-        type: Date,
-        default: Date.now,
-    },
-    starttime:{
         type: String,
+        required : true
     },
-    duration:{ 
-        type : Number,
+    duration:{
+      type: String,
+      required : true
     },
-    courseid:{
+    stime:{
+        type: String,
+        required : true
+    },
+    ftime:{
+      type: String,
+      required : true
+    },
+    course:{
         type : String,
+        required : true
     },
-    
+    topic:{
+      type : String,
+      required : true
+    },
   });
 
 const Quiz = mongoose.model('Quiz', quizschema);

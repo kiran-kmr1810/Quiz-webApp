@@ -100,6 +100,9 @@ render()
             <Quizblock
             quizTitle={quiz.quizTitle}
             quizSynopsis={quiz.quizSynopsis}
+            topic={quiz.topic}
+            course={quiz.course}
+            duration={quiz.duration}
             id={quiz._id}
             />
             ))}

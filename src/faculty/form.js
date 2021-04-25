@@ -21,13 +21,25 @@ const Form = () => {
       },
       ]);
     const [quizTitle, setquizTitle] = useState();
+    const [date, setdate] = useState();
+    const [stime, setstime] = useState();
+    const [ftime, setftime] = useState();
+    const [duration, setduration] = useState();
     const [quizSynopsis, setquizSynopsis] = useState();
+    const [course, setcourse] = useState();
+    const [topic, settopic] = useState();
 
     const handleSubmit = (e) =>{
       const output = {
         "quizTitle": quizTitle,
         "quizSynopsis": quizSynopsis,
-        "questions" : inputFields,  
+        "duration":duration,
+        "course":course,
+        "topic":topic,
+        "date":date,
+        "stime":stime,
+        "ftime":ftime,
+        "questions" : inputFields,
       }
 
       inputFields.forEach((item) => {
@@ -86,15 +98,51 @@ const Form = () => {
       <Stack spacing={3}> 
 
         <InputGroup W='700px'>   
-        <InputLeftAddon children="quizTitle" borderColor='black'/> 
+        <InputLeftAddon children="Quiz Title" borderColor='black'/> 
         <Input type="text" focusBorderColor="black" borderColor='black' 
         name="quizTitle" onChange={e => setquizTitle(e.target.value)}/>
         </InputGroup>
 
         <InputGroup W='700px'>      
-        <InputLeftAddon children="quizSynopsis" borderColor='black'/> 
+        <InputLeftAddon children="Quiz Synopsis" borderColor='black'/> 
         <Input type="text" focusBorderColor="black" borderColor='black' 
         name="quizSynopsis"onChange={e => setquizSynopsis(e.target.value)}  />
+        </InputGroup>
+
+        <InputGroup W='700px'>      
+        <InputLeftAddon children="Course" borderColor='black'/> 
+        <Input type="text" focusBorderColor="black" borderColor='black' 
+        name="course"onChange={e => setcourse(e.target.value)}  />
+        </InputGroup>
+
+        <InputGroup W='700px'>      
+        <InputLeftAddon children="Topic" borderColor='black'/> 
+        <Input type="text" focusBorderColor="black" borderColor='black' 
+        name="topic"onChange={e => settopic(e.target.value)}  />
+        </InputGroup>
+
+        <InputGroup W='700px'>      
+        <InputLeftAddon children="Date" borderColor='black'/> 
+        <Input type="text" focusBorderColor="black" borderColor='black' placeholder='YYYY/MM/DD'
+        name="date"onChange={e => setdate(e.target.value)}  />
+        </InputGroup>
+
+        <InputGroup W='700px'>      
+        <InputLeftAddon children="Start time" borderColor='black'/> 
+        <Input type="text" focusBorderColor="black" borderColor='black' placeholder='HH/MM'
+        name="stime"onChange={e => setstime(e.target.value)}  />
+        </InputGroup>
+
+        <InputGroup W='700px'>      
+        <InputLeftAddon children="End time" borderColor='black'/> 
+        <Input type="text" focusBorderColor="black" borderColor='black'placeholder='HH/MM' 
+        name="ftime"onChange={e => setftime(e.target.value)}  />
+        </InputGroup>
+
+        <InputGroup W='700px'>      
+        <InputLeftAddon children="Duration" borderColor='black'/> 
+        <Input type="text" focusBorderColor="black" borderColor='black' placeholder='Minutes'
+        name="duration"onChange={e => setduration(e.target.value)}  />
         </InputGroup>
 
         <div className="App">

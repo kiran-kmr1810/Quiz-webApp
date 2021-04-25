@@ -26,9 +26,15 @@ router.route('/:id').get((req, res) => {
 router.route('/add').post((req, res) => {
 	const quizTitle = req.body.quizTitle;
 	const quizSynopsis = req.body.quizSynopsis;
+	const topic = req.body.topic;
+	const course = req.body.course;
+	const duration = req.body.duration;
     const questions = req.body.questions;
+	const date = req.body.date;
+	const stime = req.body.stime;
+	const ftime = req.body.ftime;
 
-	const newQuiz = new Quiz({quizTitle,quizSynopsis,questions});
+	const newQuiz = new Quiz({quizTitle,quizSynopsis,course,topic,date,stime,ftime,duration,questions});
   
 	newQuiz.save()
 	  .then(() => res.json('Quiz added!'))
