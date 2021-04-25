@@ -1,8 +1,8 @@
 import React , { Component } from "react";
 import fire from "../config/fire";
 import Quizblock from "../components/quizblock";
-import { Box, Center ,Heading,HStack,SimpleGrid, Spacer, Text,VStack}from '@chakra-ui/layout';
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { Box, Center ,Heading,HStack,SimpleGrid,Text,VStack}from '@chakra-ui/react';
+import { Link } from "react-router-dom";
 import { Button } from "@chakra-ui/button";
 import load from '../Animation/loading.svg';
 import exam from '../Animation/exam.svg';
@@ -26,7 +26,7 @@ constructor(props)
 }
 
 async componentDidMount() {
-    fetch(`http://localhost:5003/quiz`)
+    fetch(`http://localhost:5003/quiz/current`)
     .then(response => response.json())
     .then(data => this.setState({ data:data,loading:false }));
 }
@@ -82,10 +82,7 @@ render()
           <Box 
             h = "100%"
             w = "650px"
-            //boxShadow='dark-lg'
-            //bgColor='green'
             bgColor='whiteAlpha.800'
-            //bgGradient="linear(to-l, blackAlpha.200 , white)"
             borderRadius="3xl"
             px = '40px'
             py = '20px'
@@ -93,27 +90,27 @@ render()
             >
             <SimpleGrid spacing="20px">
             <Center>
-            <Box py="10px" color="black"> <Heading>ALL QUIZZES</Heading></Box>
+            <Box py="10px" color="black"> <Heading>Available Quizzes</Heading></Box>
             </Center>
+
+
             <SimpleGrid columns={3} spacing="20px">
             {this.state.data.map((quiz) => (
+            
             <Quizblock
             quizTitle={quiz.quizTitle}
             quizSynopsis={quiz.quizSynopsis}
             topic={quiz.topic}
             course={quiz.course}
             duration={quiz.duration}
+            date={quiz.date}
+            stime={quiz.stime}
+            ftime={quiz.ftime}
             id={quiz._id}
             />
+            
             ))}
             </SimpleGrid>
-            <Spacer/>
-            <Center>
-              <Button bgColor='white' color='orange.400'
-              _hover={{
-                bg:"black",
-            }}>More</Button>
-            </Center>
             </SimpleGrid>
             
             </Box>

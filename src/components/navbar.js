@@ -5,7 +5,12 @@ import {
     Spacer,
     Button,
     Text,
+    Menu,
+    MenuButton,
+    MenuList,
+    MenuItem
 } from '@chakra-ui/react'
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
 return(
@@ -15,13 +20,23 @@ return(
 bg='black'
 px={4} height = '50px'>
 <HStack spacing="24px"py = '10px'>
-    <Text color='orange.400' size='md' fontSize= '22' fontFamily='sans-serif'letterSpacing='widest' fontWeight='extrabold'>QUIZZY</Text>
-    <Spacer />
-    <Button size = 'md' color = 'white' variant="link"> HOME </Button>
-    <Button size = 'md' color = 'orange.400' variant="link"> ABOUT </Button>
-    <Button size = 'md' color = 'white' variant="link"> MARKS </Button>
+    <Text color='orange.400' 
+    size='md' fontSize= '22' 
+    fontFamily='sans-serif'
+    letterSpacing='widest' f
+    ontWeight='extrabold'>QUIZZY</Text>
 
+    <Spacer />   
+    
+    <Menu placement='left-start'>
+    <MenuButton>
     <Avatar bgColor='orange.400' size = "sm"/>
+    </MenuButton>
+    <MenuList maxW='10px'>
+        <Link to = '/'><MenuItem>LOGOUT</MenuItem></Link>
+    </MenuList>
+    </Menu>
+
 </HStack>
 </Box>
 <Box bgColor='orange.400' h='3px' w='100%'/>

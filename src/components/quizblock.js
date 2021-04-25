@@ -1,5 +1,16 @@
 import {
-    Box
+    Box,Popover,Button,
+    PopoverTrigger,
+    PopoverContent,
+    PopoverHeader,
+    PopoverBody,
+    PopoverFooter,
+    PopoverArrow,
+    Portal,
+    PopoverCloseButton,
+    Text,
+    HStack,
+    Stack
 } from '@chakra-ui/react'
 import React  from "react";
 import { BrowserRouter as Router, Link } from "react-router-dom";
@@ -36,44 +47,28 @@ render() {
              <>
              </>
              :
-             <Link to = {{
-                pathname:'/quiz',
-                aboutProps:{
-                    questions :this.state.data
-                }
-            }}>
+             <Popover trigger='hover' placement="left">
+             <PopoverTrigger>
+            <Link to = {{pathname:'/quiz',aboutProps:{questions :this.state.data}}}>
             <Box
             as="button"
             fontWeight="bold"
             borderRadius="md"
             bgColor = "orange.400"
             onClick = {this._onButtonClick}
-            _hover={{
-                bg:"Black",
-            }}
+            _hover={{bg:"Black",}}
             h = "100%"
-            w = "200px"
-            >
+            w = "200px">
             <Box
                 mt="1"
                 fontWeight="bold"
-                fontSize='2xl'
+                fontSize='xl'
                 as="h2"
                 lineHeight="tight"
                 color="white"
                 isTruncated
                 >
                 {this.props.quizTitle}
-                </Box>
-                <Box
-                mt="1"
-                as="h4"
-                fontSize='sm'
-                lineHeight="tight"
-                color="white"
-                isTruncated
-                >
-                {this.props.quizSynopsis}
                 </Box>
                 <Box
                 mt="1"
@@ -107,6 +102,49 @@ render() {
                 </Box>
             </Box>
             </Link>
+            </PopoverTrigger>
+            <Portal>
+            <PopoverContent bgColor='orange.400'>
+              <PopoverArrow />
+              <PopoverHeader>
+              <Text color='black' fontSize='s' fontWeight='bold'>
+              {this.props.quizTitle}
+              </Text>
+            </PopoverHeader>
+              <PopoverBody>
+                <Box>
+                    <Stack spacing='3px'>
+                    <HStack spacing='1px'>
+                    <Text color='black' fontSize='xs' fontWeight='bold'>COURSE</Text>
+                    <Text color='black' fontSize='xs' fontWeight='bold'>: {this.props.course}</Text>
+                    </HStack>
+                    <HStack spacing='1px'>
+                    <Text color='black' fontSize='xs' fontWeight='bold'>TOPIC</Text>
+                    <Text color='black' fontSize='xs' fontWeight='bold'>: {this.props.topic}</Text>
+                    </HStack>
+                    <HStack spacing='1px'>
+                    <Text color='black' fontSize='xs' fontWeight='bold'>quizSynopsis</Text>
+                    <Text color='black' fontSize='xs' fontWeight='bold'>: {this.props.quizSynopsis}</Text>
+                    </HStack>
+                    <HStack spacing='1px'>
+                    <Text color='black' fontSize='xs' fontWeight='bold'>Date</Text>
+                    <Text color='black' fontSize='xs' fontWeight='bold'>: {this.props.date}</Text>
+                    </HStack>
+                    <HStack spacing='1px'>
+                    <Text color='black' fontSize='xs' fontWeight='bold'>Duration</Text>
+                    <Text color='black' fontSize='xs' fontWeight='bold'>: {this.props.duration}</Text>
+                    </HStack>
+                    </Stack>
+                </Box>
+              </PopoverBody>
+              <PopoverFooter>
+              <Text color='white' fontSize='s' fontWeight='bold'>
+              {this.props.stime} - {this.props.ftime}
+              </Text>
+              </PopoverFooter>
+            </PopoverContent>
+          </Portal>
+        </Popover>
 }
         </div>
     );

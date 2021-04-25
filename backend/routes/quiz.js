@@ -34,14 +34,12 @@ router.route('/current').get((req, res) => {
     } 
     var hr = today.getHours();
     if(hr<10)
-    hr='0'+hr;
+    {hr='0'+hr};
     var min = today.getMinutes();
     if(min<10)
-    min='0'+min;
+    {min='0'+min};
     var time = hr+":"+min
     today = yyyy+'/'+mm+"/"+dd;
-	console.log(today);
-	console.log(time);
 	Quiz.find({$and :[{"date":{$lte:today}},{"ftime":{$gte:time}},{"stime":{$lte: time}}]})
 	.then(out => res.json(out))
 	.catch(err => res.status(400).json('Errors '+err));

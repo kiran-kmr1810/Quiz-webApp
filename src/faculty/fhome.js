@@ -1,39 +1,69 @@
 import React , { Component } from "react";
-import fire from "../config/fire";
 import {
     Box,
     Button,
-    HStack,
     Text,
-    VStack,
+    Stack,
+    Center,
+    SimpleGrid,
+    Heading,
+    HStack
 } from '@chakra-ui/react'
 import  { Link } from 'react-router-dom'
+import load from '../Animation/loading.svg';
 import teach from '../Animation/teach.svg';
-
+import Quizblock from "../components/quizblock";
 
 class Fhome extends Component{
 
-state = {
 
-}
 constructor(props)
 {
     super(props)
+    this.state = { 
+        data: [],
+        loading: true
+    };
 }
-logout(){
-    fire.auth().signOut();
-}
-addques(){
-    return(
-        <div>
 
-        </div>
-    )
+async componentDidMount() {
+    fetch(`http://localhost:5003/quiz/`)
+    .then(response => response.json())
+    .then(data => this.setState({ data:data,loading:false }));
 }
+
+componentWillUnmount() {
+    // fix Warning: Can't perform a React state update on an unmounted component
+    this.setState = (state,callback)=>{
+        return;
+    };
+}
+
+
+
 render()
 {
-    return(
-        <div>
+return((this.state.loading)?
+    <div>
+      <Center>
+      <Box
+      w = "100%"
+      h = "600px"
+      py = "100px"
+      >
+      <Center>
+      <SimpleGrid>
+      <Text fontSize="4xl">HOLD YOUR BREATH</Text>
+      <img src={load} width = '300px' Height = '300px' />
+      </SimpleGrid>
+      </Center>
+      </Box>
+      </Center>
+    </div>
+
+    :
+    
+    <div>
            <Box p='50px' bgColor='orange.400' w='100%' h='567px'>
            <Box>
             <Text 
@@ -43,32 +73,51 @@ render()
             >Faculty Home Page</Text>
             <Box bgColor='black' h='5px' w='100%'/>
             </Box>
-            <HStack spacing='200px'>
-                <img src={teach} width = '500px' Height = '500px' />
-                <VStack spacing='150px'>
+            <HStack spacing='100px'>
+            <Stack spacing='15px'>
                 <Link to='/createquiz' > 
-                <Button bgColor = "orange.400" 
-                width='full' 
-                fontSize='5xl'
-                mt={4}
-                color='white'
-                _hover={{
-                    //bg:"black",
-                    color:"black"
-                    }}
-                >CREATE NEW QUIZ</Button>
+                    <Button bgColor = "black"
+                    color='orange.400'
+                    width='650px' 
+                    mt={4}
+                    _hover={{color:"white"}}>
+                    CREATE NEW QUIZ</Button>
                 </Link>
-                <Link to = '/'>
-                <Button bgColor = "orange.400" 
-                width='full' 
-                mt={4}
-                _hover={{
-                    bg:"black",
-                    color:"orange.400"
-                    }}
-                >Logout</Button>
-                </Link>
-                </VStack>
+
+                <Box 
+                h = "100%"
+                w = "650px"
+                bgColor='whiteAlpha.800'
+                borderRadius="3xl"
+                px = '40px'
+                py = '20px'
+                px={4}
+                >
+                <SimpleGrid spacing="20px">
+                <Center>
+                <Box py="10px" color="black"> <Heading>List of All Quizzes</Heading></Box>
+                </Center>
+
+                <SimpleGrid columns={3} spacing="20px">
+                {this.state.data.map((quiz) => (
+                
+                <Quizblock
+                quizTitle={quiz.quizTitle}
+                quizSynopsis={quiz.quizSynopsis}
+                topic={quiz.topic}
+                course={quiz.course}
+                duration={quiz.duration}
+                date={quiz.date}
+                stime={quiz.stime}
+                ftime={quiz.ftime}
+                id={quiz._id}
+                />
+                ))}
+                </SimpleGrid>
+                </SimpleGrid>
+                </Box>
+            </Stack>
+            <img src={teach} width = '400px' Height = '400px' />
             </HStack>
            </Box>
         </div>
