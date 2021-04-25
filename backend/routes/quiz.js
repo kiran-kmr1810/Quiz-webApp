@@ -16,9 +16,34 @@ router.route('/quizname/:quizTitle').get((req, res) => {
 		res.json(obj); });
 });
 
-router.route('/:id').get((req, res) => {
+/*router.route('/:id').get((req, res) => {
 	Quiz.findById(req.params.id)
 	.then(login => res.json(login))
+	.catch(err => res.status(400).json('Errors '+err));
+});*/
+
+router.route('/current').get((req, res) => {
+	var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; 
+    var yyyy = today.getFullYear();
+    if(mm < 10){
+        mm = '0'+mm}
+    if(dd < 10){
+        dd = '0'+dd
+    } 
+    var hr = today.getHours();
+    if(hr<10)
+    hr='0'+hr;
+    var min = today.getMinutes();
+    if(min<10)
+    min='0'+min;
+    var time = hr+":"+min
+    today = yyyy+'/'+mm+"/"+dd;
+	console.log(today);
+	console.log(time);
+	Quiz.find({$and :[{"date":{$lte:today}},{"ftime":{$gte:time}},{"stime":{$lte: time}}]})
+	.then(out => res.json(out))
 	.catch(err => res.status(400).json('Errors '+err));
 });
 

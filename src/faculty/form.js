@@ -129,13 +129,13 @@ const Form = () => {
 
         <InputGroup W='700px'>      
         <InputLeftAddon children="Start time" borderColor='black'/> 
-        <Input type="text" focusBorderColor="black" borderColor='black' placeholder='HH/MM'
+        <Input type="text" focusBorderColor="black" borderColor='black' placeholder='HH:MM'
         name="stime"onChange={e => setstime(e.target.value)}  />
         </InputGroup>
 
         <InputGroup W='700px'>      
         <InputLeftAddon children="End time" borderColor='black'/> 
-        <Input type="text" focusBorderColor="black" borderColor='black'placeholder='HH/MM' 
+        <Input type="text" focusBorderColor="black" borderColor='black'placeholder='HH:MM' 
         name="ftime"onChange={e => setftime(e.target.value)}  />
         </InputGroup>
 
