@@ -69,8 +69,8 @@ return((this.state.loading)?
             <Text 
             fontSize= '32' 
             fontWeight='medium'
-            color='orange.900'
-            >Faculty Home Page</Text>
+            color='black'
+            >FACULTY HOME PAGE</Text>
             <Box bgColor='black' h='5px' w='100%'/>
             </Box>
             <HStack spacing='100px'>

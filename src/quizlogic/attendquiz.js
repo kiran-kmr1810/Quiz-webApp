@@ -9,7 +9,13 @@ const Attendquiz = (props) =>
         <div>
             <Box>
             <Center>
-            <Quizwindow quiz = {k.questions}/>
+            <Quizwindow 
+            quiz = {k.questions} 
+            quizTitle={k.quizTitle} 
+            topic={k.topic} 
+            course={k.course}
+            date={k.date}
+            />
             </Center>
             </Box>
         </div>

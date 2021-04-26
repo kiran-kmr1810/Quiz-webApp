@@ -1,18 +1,7 @@
 const mongoose = require('mongoose');
 
-var result = new mongoose.Schema({
-  quizTitle:{
-    type : String,
-    required : true
-  },
-  mark: {
-    type : Number,
-    required : true
-  }
-})
-
 const resultschema = new mongoose.Schema({
-    email:{
+    quizTitle:{
       type : String,
       required : true
     },
@@ -20,7 +9,22 @@ const resultschema = new mongoose.Schema({
       type : String,
       required : true
     },
-    results : [result]
+    course:{
+      type : String,
+      required : true
+    },
+    topic:{
+      type : String,
+      required : true
+    },
+    date:{
+      type : String,
+      required : true
+    },
+    mark:{
+      type : String,
+      required : true
+    },
   });
 
 const Result = mongoose.model('Result', resultschema);
