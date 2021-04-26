@@ -16,13 +16,13 @@ router.route('/quizname/:quizTitle').get((req, res) => {
 		res.json(obj); });
 });
 
-/*router.route('/:id').get((req, res) => {
+router.route('/:id').get((req, res) => {
 	Quiz.findById(req.params.id)
 	.then(login => res.json(login))
 	.catch(err => res.status(400).json('Errors '+err));
-});*/
+});
 
-router.route('/current').get((req, res) => {
+router.route('/quizcurr/current').get((req, res) => {
 	var today = new Date();
     var dd = today.getDate();
     var mm = today.getMonth()+1; 

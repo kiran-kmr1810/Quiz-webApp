@@ -26,7 +26,7 @@ constructor(props)
 }
 
 async componentDidMount() {
-    fetch(`http://localhost:5003/quiz/current`)
+    fetch(`http://localhost:5003/quiz/quizcurr/current`)
     .then(response => response.json())
     .then(data => this.setState({ data:data,loading:false }));
 }
@@ -120,12 +120,14 @@ render()
           <Box h='100px' w='100%' bg='black' py='25px'>
               <Center>
               <HStack spacing='250px'>
+              <Link to = '/mark'>
                 <Button  bgColor='black' color='white'
                 _hover={{
                 bg:"black",
                 color:"orange.400"
                 }}>
                 MY MARKS</Button>
+              </Link>
               
                 <Link to = '/about'>
                 <Button  bgColor='black' color='white'

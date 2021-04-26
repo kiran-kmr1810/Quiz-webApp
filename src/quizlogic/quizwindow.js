@@ -1,4 +1,4 @@
-import React, {Component } from 'react'; 
+import React from 'react'; 
 import Quiz from 'react-quiz-component';
 
 function Quizwindow(props){

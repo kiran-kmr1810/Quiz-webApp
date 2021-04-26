@@ -1,5 +1,5 @@
 import {
-    Box,Popover,Button,
+    Box,Popover,
     PopoverTrigger,
     PopoverContent,
     PopoverHeader,
@@ -7,16 +7,18 @@ import {
     PopoverFooter,
     PopoverArrow,
     Portal,
-    PopoverCloseButton,
     Text,
     HStack,
     Stack
 } from '@chakra-ui/react'
 import React  from "react";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { Link ,useHistory } from "react-router-dom";
+
+
 
 class Quizblock extends React.Component {
 
+    
 constructor(props) 
 {
     super(props);
@@ -29,27 +31,34 @@ constructor(props)
 }
 
 async componentDidMount() {
+    this.state.showComponent = false;
+    this.state.loading = true;
     fetch(`http://localhost:5003/quiz/${this.props.id}`)
     .then(response => response.json())
     .then(data => this.setState({ data:data,loading:false }));
 }
   
 _onButtonClick() {
-      this.setState({
+    this.setState({
         showComponent: true,
       });
 }
+
  
 render() {
     return(
         <div>
             {(this.state.showComponent && !this.state.loading)?
              <>
+             <Text>loading...</Text>
              </>
-             :
-             <Popover trigger='hover' placement="left">
-             <PopoverTrigger>
-            <Link to = {{pathname:'/quiz',aboutProps:{questions :this.state.data}}}>
+            :
+            <Link to = {{
+              pathname:'/quiz', 
+              aboutProps:{
+                    questions : this.state.data
+                }
+              }}>
             <Box
             as="button"
             fontWeight="bold"
@@ -102,49 +111,7 @@ render() {
                 </Box>
             </Box>
             </Link>
-            </PopoverTrigger>
-            <Portal>
-            <PopoverContent bgColor='orange.400'>
-              <PopoverArrow />
-              <PopoverHeader>
-              <Text color='black' fontSize='s' fontWeight='bold'>
-              {this.props.quizTitle}
-              </Text>
-            </PopoverHeader>
-              <PopoverBody>
-                <Box>
-                    <Stack spacing='3px'>
-                    <HStack spacing='1px'>
-                    <Text color='black' fontSize='xs' fontWeight='bold'>COURSE</Text>
-                    <Text color='black' fontSize='xs' fontWeight='bold'>: {this.props.course}</Text>
-                    </HStack>
-                    <HStack spacing='1px'>
-                    <Text color='black' fontSize='xs' fontWeight='bold'>TOPIC</Text>
-                    <Text color='black' fontSize='xs' fontWeight='bold'>: {this.props.topic}</Text>
-                    </HStack>
-                    <HStack spacing='1px'>
-                    <Text color='black' fontSize='xs' fontWeight='bold'>quizSynopsis</Text>
-                    <Text color='black' fontSize='xs' fontWeight='bold'>: {this.props.quizSynopsis}</Text>
-                    </HStack>
-                    <HStack spacing='1px'>
-                    <Text color='black' fontSize='xs' fontWeight='bold'>Date</Text>
-                    <Text color='black' fontSize='xs' fontWeight='bold'>: {this.props.date}</Text>
-                    </HStack>
-                    <HStack spacing='1px'>
-                    <Text color='black' fontSize='xs' fontWeight='bold'>Duration</Text>
-                    <Text color='black' fontSize='xs' fontWeight='bold'>: {this.props.duration}</Text>
-                    </HStack>
-                    </Stack>
-                </Box>
-              </PopoverBody>
-              <PopoverFooter>
-              <Text color='white' fontSize='s' fontWeight='bold'>
-              {this.props.stime} - {this.props.ftime}
-              </Text>
-              </PopoverFooter>
-            </PopoverContent>
-          </Portal>
-        </Popover>
+           
 }
         </div>
     );

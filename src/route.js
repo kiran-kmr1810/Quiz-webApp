@@ -9,6 +9,7 @@ import Attendquiz from './quizlogic/attendquiz';
 import rough from './rough';
 import About from './about';
 import admin from './admin/admin';
+import Mark from './student/mark';
 
 
 function path(){
@@ -26,6 +27,7 @@ function path(){
                 <Route path="/result" exact component = {fhome} />
                 <Route path="/rough" exact component = {rough} />
                 <Route path="/about" exact component = {About} />
+                <Route path="/mark" exact component = {Mark} />
                 </Switch>
             </div>
         </Router>
