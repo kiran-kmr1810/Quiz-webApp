@@ -2,13 +2,13 @@ import React from 'react';
 import Quiz from 'react-quiz-component';
 import axios from 'axios';
 import firebase from 'firebase';
-import { Text } from '@chakra-ui/layout';
+import { Box,Button } from '@chakra-ui/react';
+import { useHistory } from "react-router-dom";
 
 function Quizwindow(props){
 
+let history = useHistory();
 const onCompleteAction = (obj) => {
-    console.log(obj.correctPoints);
-    // YOUR LOGIC GOES HERE
     var uid =  firebase.auth().currentUser.uid
     const output = {
       "uid": uid,
@@ -27,14 +27,24 @@ const onCompleteAction = (obj) => {
     });
   }
 }
-
     return(
       <div>
-        {/*<Text>{props.quizTitle}</Text>
-        <Text>{props.date}</Text>
-        <Text>{props.topic}</Text>
-        <Text>{props.course}</Text>*/}
-        <Quiz quiz={props.quiz} shuffle={true} onComplete={onCompleteAction}/>
+        <Box>
+        <Button w='100px'h='30px'mt={4}
+          color='black'
+          _hover={{
+              color:"black",
+              bg:"white"
+            }}
+          onClick={history.goBack}>
+          Return
+        </Button>
+        </Box>
+        <Box h='100%' w='100%' p='30px' borderRadius="2xl" borderColor='black'>
+        <Quiz quiz={props.quiz} 
+        shuffle={true} 
+        onComplete={onCompleteAction}/>
+        </Box>
       </div>
     );
 }

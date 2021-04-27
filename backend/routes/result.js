@@ -11,6 +11,15 @@ router.route("/").get((req, res) => {
 	.catch(err => res.status(400).json('Errors '+err));
 });
 
+router.route('/uid/:uid').get((req, res) => {
+	Result.find({'uid' : req.params.uid})
+		.then(out => res.json(out))
+		.catch(err => res.status(400).json('Errors '+err)); 
+});
+
+router.route('/:uid').get((req, res) => {
+
+});
 
 //Create operation
 router.route('/add').post((req, res) => {
