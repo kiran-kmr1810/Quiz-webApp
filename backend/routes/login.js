@@ -15,9 +15,14 @@ router.route("/").get((req, res) => {
 //Create operation
 router.route('/add').post((req, res) => {
 	const uid = req.body.uid;
+	const name = req.body.name;
+	const cl = req.body.cl;
 	const role = req.body.role;
+	const phone = req.body.phone;
+	const email = req.body.email;
+	const id = req.body.id;
   
-	const newUser = new Login({uid,role});
+	const newUser = new Login({uid,role,name,cl,phone,email,id});
   
 	newUser.save()
 	  .then(() => res.json('User added!'))

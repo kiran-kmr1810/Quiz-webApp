@@ -117,7 +117,7 @@ render()
             </HStack>
             </VStack>
           </Box>
-          <Box h='100px' w='100%' bg='black' py='25px'>
+          <Box h='100px' w='100%' bg='black' paddingTop ='25px'>
               <Center>
               <HStack spacing='250px'>
               <Link to = '/mark'>

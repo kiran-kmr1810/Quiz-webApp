@@ -46,36 +46,39 @@ render()
         </div>
 
         :<div>
-        <GoBack/>
+        <Box bgColor='orange.600' h='580px'>
+        <Box p='20px'>
+            <GoBack/>
+        </Box>
         <VStack>
         <Box>
             <Text 
             fontSize= '22' 
             fontWeight='medium'
-            color='black'
+            color='white'
             >MY MARKS</Text>
         <Box bgColor='black' h='5px' w='1000px'/>
         </Box>
         <Box p='30px'>
         <Box w='800px' h='100%' p='5px' bgColor='black'>
         <Table variant="striped" color='orange.400' bgColor='white' >
-        <Thead>
+        <Thead bgColor='black'>
             <Tr>
-            <Th fontWeight='extrabold' color='black' fontSize='13'>QUIZ NAME</Th>
-            <Th fontWeight='extrabold' color='black' fontSize='13'>COURSE</Th>
-            <Th fontWeight='extrabold' color='black' fontSize='13'>TOPIC</Th>
-            <Th fontWeight='extrabold' color='black' fontSize='13'>DATE</Th>
-            <Th isNumeric fontWeight='extrabold' color='black' fontSize='13'>MARKS</Th>
+            <Th fontWeight='extrabold' color='white' fontSize='15'>QUIZ NAME</Th>
+            <Th fontWeight='extrabold' color='white' fontSize='15'>COURSE</Th>
+            <Th fontWeight='extrabold' color='white' fontSize='15'>TOPIC</Th>
+            <Th fontWeight='extrabold' color='white' fontSize='15'>DATE</Th>
+            <Th isNumeric fontWeight='extrabold' color='white' fontSize='15'>MARKS</Th>
             </Tr>
         </Thead>
         <Tbody>
         {this.state.data.map((quiz) => (
             <Tr>
-            <Td fontWeight='bold'>{quiz.quizTitle}</Td>
-            <Td fontWeight='bold'>{quiz.course}</Td>
-            <Td fontWeight='bold'>{quiz.topic}</Td>
-            <Td fontWeight='bold'>{quiz.date}</Td>
-            <Td isNumeric fontWeight='bold'>{quiz.mark}</Td>
+            <Td fontWeight='bold' color='black'>{quiz.quizTitle}</Td>
+            <Td fontWeight='bold' color='black'>{quiz.course}</Td>
+            <Td fontWeight='bold' color='black'>{quiz.topic}</Td>
+            <Td fontWeight='bold' color='black'>{quiz.date}</Td>
+            <Td isNumeric fontWeight='bold'color='black'>{quiz.mark}</Td>
             </Tr>
         ))}
         </Tbody>
@@ -83,6 +86,7 @@ render()
         </Box>
         </Box>
         </VStack>
+        </Box>
     </div>           
 );}}
 

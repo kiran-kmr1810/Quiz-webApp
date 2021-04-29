@@ -5,7 +5,22 @@ const loginschema = new mongoose.Schema({
       type : String,
       required : true
     },
+    email: {
+      type : String,
+    },
     role: {
+      type : String,
+    },
+    name: {
+      type : String,
+    },
+    id: {
+      type : String,
+    },
+    phone: {
+      type : String,
+    },
+    cl: {
       type : String,
     },
   });
