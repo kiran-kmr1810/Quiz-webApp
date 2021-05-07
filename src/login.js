@@ -3,6 +3,7 @@ import fire from "./config/fire";
 import firebase from 'firebase';
 import { Button} from "@chakra-ui/react"
 import log from './Animation/log.svg'
+import Mod from './components/modal'
 import {
     Box,
     Flex,
@@ -97,7 +98,8 @@ render()
                     <Checkbox>Remember Me</Checkbox>
                 </Box>*/}
                 <Box>
-                    <Link color ="orange.400">Forgot your password?</Link>
+                    <Mod/>
+                    {/*<Link color ="orange.400">Forgot your password?</Link>*/}
                 </Box>
             </Stack>
 

@@ -249,6 +249,8 @@ const Form = () => {
           title: "Quiz created.",
           description: "We've created the quiz for you.",
           status: "success",
+          variant: 'left-accent',
+          position: "top-right",
           duration: 2000,
           isClosable: true,
         });handleSubmit();}}>SUBMIT AND CREATE QUIZ</Button>
