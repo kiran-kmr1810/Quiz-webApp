@@ -23,6 +23,9 @@ const loginschema = new mongoose.Schema({
     cl: {
       type : String,
     },
+    imgl:{
+      type : String,
+    },
   });
 
 const Login = mongoose.model('Login', loginschema);

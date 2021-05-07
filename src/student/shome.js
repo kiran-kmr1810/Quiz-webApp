@@ -1,10 +1,9 @@
 import React , { Component } from "react";
 import fire from "../config/fire";
 import Quizblock from "../components/quizblock";
-import { Box, Center ,Heading,HStack,SimpleGrid,Text,VStack,CircularProgress}from '@chakra-ui/react';
+import { Box, Center ,Heading,HStack,SimpleGrid,VStack,CircularProgress}from '@chakra-ui/react';
 import { Link } from "react-router-dom";
 import { Button } from "@chakra-ui/button";
-import load from '../Animation/loading.svg';
 import exam from '../Animation/exam.svg';
 
 var sectionStyle = {

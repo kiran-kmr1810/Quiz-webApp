@@ -1,4 +1,4 @@
-import { Text,Center,Box,SimpleGrid,Table,Thead,Tbody,Tr,Th,Td,TableCaption, VStack, } from "@chakra-ui/react";
+import { Text,Center,Box,SimpleGrid,Table,Thead,Tbody,Tr,Th,Td,CircularProgress, VStack, } from "@chakra-ui/react";
 import React , { Component } from "react";
 import firebase from 'firebase';
 import load from '../Animation/loading.svg';
@@ -36,10 +36,7 @@ render()
           py = "100px"
           >
           <Center>
-          <SimpleGrid>
-          <Text fontSize="4xl">HOLD YOUR BREATH</Text>
-          <img src={load} width = '300px' Height = '300px' />
-          </SimpleGrid>
+          <CircularProgress isIndeterminate color="orange.400" size="150px" thickness="10px" />
           </Center>
           </Box>
           </Center>

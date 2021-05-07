@@ -1,25 +1,35 @@
 import {
-    Box, useColorModeValue,Avatar, Heading,Text,Stack
+    Box,Avatar, Heading,Text,Stack
 } from '@chakra-ui/react'
 import React  from "react";
 
-const data = {
-    imageURL:'https://images.unsplash.com/photo-1520810627419-35e362c5dc07?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&ixid=eyJhcHBfaWQiOjE3Nzg0fQ',
-    name: 'Lindsey morgan',
-    role: 'student',
-    rollno:'CB.EN.U4CSE18430',
-    class: 'CSE E',
-    phone: 8056961720,
-    mail: "kk10@gmail.com",
-  };
 
-function Profile(){
+class Profile extends React.Component {
+  constructor(props) 
+  {
+    super(props);
+    this.state = {
+        data: [],
+        showComponent: false,
+        loading: true
+    };
+  }
+
+  async componentDidMount() {
+    this.state.showComponent = false;
+    this.state.loading = true;
+    fetch(`http://localhost:5003/login/details/${this.props.uid}`)
+    .then((response) => response.json()) 
+    .then(data => this.setState({ data:data,loading:false }));;   
+}
+    
+  render() {
     return (
         <div>
         <Box
         w='500px'
         h='450px'
-        bg={useColorModeValue('white', 'gray.900')}
+        bg="white"
         boxShadow={'2xl'}
         rounded={'lg'}
         p={6}
@@ -27,33 +37,33 @@ function Profile(){
 
         <Avatar
           size={'2xl'}
-          src={data.imageURL}
+          //src={this.state.data.imgl}
+          src = {`https://drive.google.com/uc?id=${this.state.data.imgl}`}
           alt={'Avatar Alt'}
           mb={4}
           pos={'relative'}
         />
         <Heading fontSize={'3xl'} fontFamily={'cursive'}>
-          {data.name}
+          {this.state.data.name}
         </Heading>
         <Text fontWeight={600} fontSize='28' color={'orange.400'} mb={4}>
-          {data.role}
+          {this.state.data.role}
         </Text>
         <Text
           textAlign={'center'}
           fontSize='20'
-          //bg ={useColorModeValue('orange.700', 'orange.400')}
           color='black'
           px={3}>
-          {data.rollno}
+          {this.state.data.id}
         </Text>
         <Stack align={'center'} justify={'center'} direction={'row'} mt={6} paddingBottom ='20px'>
           <Text
             px={2}
             py={1}
-            bg='orange.400'
             color='white'
+            bg='black'
             >
-            {data.class}
+            {this.state.data.cl}
           </Text>
           <Text
             px={2}
@@ -61,20 +71,20 @@ function Profile(){
             bg='orange.400'
             color='white'
             >
-            {data.phone}
+            {this.state.data.phone}
           </Text>
         </Stack>
         <Text
             px={2}
             py={1}
-            bg='orange.400'
-            color='white'
+            color='black'
             >
-            {data.mail}
+            {this.state.data.email}
           </Text>
         </Box>
         </div>
     )
+}
 }
 
 export default Profile;

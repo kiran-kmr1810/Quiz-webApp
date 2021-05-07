@@ -11,7 +11,6 @@ import {
     CircularProgress
 } from '@chakra-ui/react'
 import  { Link } from 'react-router-dom'
-import load from '../Animation/loading.svg';
 import teach from '../Animation/teach.svg';
 import Quizblock from "../components/quizblock";
 

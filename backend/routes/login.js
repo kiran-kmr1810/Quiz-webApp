@@ -21,8 +21,9 @@ router.route('/add').post((req, res) => {
 	const phone = req.body.phone;
 	const email = req.body.email;
 	const id = req.body.id;
+	const imgl = req.body.imgl;
   
-	const newUser = new Login({uid,role,name,cl,phone,email,id});
+	const newUser = new Login({uid,role,name,cl,phone,email,id,imgl});
   
 	newUser.save()
 	  .then(() => res.json('User added!'))
@@ -45,6 +46,11 @@ router.route('/uid/:uid').get((req, res) => {
 Login.findOne({'uid': req.params.uid}, function(err,obj) { 
 	res.json(obj.role); });
 });
+
+router.route('/details/:uid').get((req, res) => {
+	Login.findOne({'uid': req.params.uid}, function(err,obj) { 
+		res.json(obj); });
+	});
 
 
 //Delete by id

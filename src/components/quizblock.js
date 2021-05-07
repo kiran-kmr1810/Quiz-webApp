@@ -9,7 +9,9 @@ import {
     Portal,
     Text,
     HStack,
-    Stack
+    Stack,
+    CircularProgress,
+    Center
 } from '@chakra-ui/react'
 import React  from "react";
 import { Link ,useHistory } from "react-router-dom";
@@ -49,9 +51,19 @@ render() {
     return(
         <div>
             {(this.state.showComponent && !this.state.loading)?
-             <>
-             <Text>loading...</Text>
-             </>
+             <div>
+             <Center>
+             <Box
+             w = "100%"
+             h = "600px"
+             py = "100px"
+             >
+             <Center>
+             <CircularProgress isIndeterminate color="orange.400" size="150px" thickness="10px" />
+             </Center>
+             </Box>
+             </Center>
+           </div>
             :
             <Link to = {{
               pathname:'/quiz', 

@@ -13,6 +13,7 @@ const Admin = () => {
     const [phone, setphone] = useState();
     const [cl, setcl] = useState();
     const [password,setpassword] = useState();
+    const [imgl,setimgl] = useState();
     var a = "";
 
     const signup = async({e, p}) => {
@@ -41,6 +42,7 @@ const Admin = () => {
             "id": id,
             "phone": phone,
             "cl": cl,
+            "imgl":imgl,
         }
         axios.post(`http://localhost:5003/login/add`, out)
         .catch(error => {
@@ -68,8 +70,13 @@ const Admin = () => {
         </FormControl>
 
         <FormControl id="password" isRequired>
-        <FormLabel>Password</FormLabel>
+        <FormLabel color='orange.400'>Password</FormLabel>
         <Input  placeholder="password" onChange={e => setpassword(e.target.value)}/>
+        </FormControl>
+
+        <FormControl id="imgl" isRequired>
+        <FormLabel>Drive Image Id</FormLabel>
+        <Input  placeholder="Paste the id of your image uploaded togoogle drive" onChange={e => setimgl(e.target.value)}/>
         </FormControl>
 
         <FormControl id="Name" isRequired>
