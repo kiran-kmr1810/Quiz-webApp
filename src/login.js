@@ -32,7 +32,7 @@ login(e){
     e.preventDefault();
     fire.auth().signInWithEmailAndPassword(this.state.email,this.state.password).then(async(u)=>
     {   
-        //console.log(u)
+        console.log(u)
         var uid =  await firebase.auth().currentUser.uid
         await fetch(`http://localhost:5003/login/uid/${uid}`)
         .then((response) => response.json()) 

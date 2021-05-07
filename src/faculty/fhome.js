@@ -7,7 +7,8 @@ import {
     Center,
     SimpleGrid,
     Heading,
-    HStack
+    HStack,
+    CircularProgress
 } from '@chakra-ui/react'
 import  { Link } from 'react-router-dom'
 import load from '../Animation/loading.svg';
@@ -45,20 +46,17 @@ render()
 {
 return((this.state.loading)?
     <div>
-      <Center>
-      <Box
-      w = "100%"
-      h = "600px"
-      py = "100px"
-      >
-      <Center>
-      <SimpleGrid>
-      <Text fontSize="4xl">HOLD YOUR BREATH</Text>
-      <img src={load} width = '300px' Height = '300px' />
-      </SimpleGrid>
-      </Center>
-      </Box>
-      </Center>
+        <Center>
+        <Box
+        w = "100%"
+        h = "600px"
+        py = "100px"
+        >
+        <Center>
+        <CircularProgress isIndeterminate color="orange.400" size="150px" thickness="10px" />
+        </Center>
+        </Box>
+        </Center>
     </div>
 
     :

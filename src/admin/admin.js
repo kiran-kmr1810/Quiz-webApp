@@ -1,5 +1,5 @@
 import { HStack ,FormControl,FormLabel,Input, Box,Select,Text,Button,Center,useToast} from '@chakra-ui/react';
-import React, { useState} from 'react';
+import React, {useState} from 'react';
 import add from '../Animation/add.svg';
 import fire from "../config/fire";
 import axios from 'axios';
@@ -12,41 +12,41 @@ const Admin = () => {
     const [id, setid] = useState();
     const [phone, setphone] = useState();
     const [cl, setcl] = useState();
-    const [uid,setuid] =useState();
+    const [password,setpassword] = useState();
+    var a = "";
 
     const signup = async({e, p}) => {
-        fire.auth().createUserWithEmailAndPassword(e,p).then(async(u)=>
+        await fire.auth().createUserWithEmailAndPassword(e,p).then(async(u)=>
         {   
-            //setuid(u.user.uid);
-            return u.user.uid
+                a = u.user.uid;
         })
 
     }
 
     const handleSubmit = async(e) =>{
-        const password = name.concat(id);
+        
         const pass ={
             "e" : email,
             "p" : password,
         }
-        var result =  await signup(pass)
-        setuid(result)
+
+        await signup(pass)
+
         const out = {
             "email": email,
-            "uid": uid,
+            "uid": a,
+            "password": password,
             "name": name,
             "role": role,
             "id": id,
             "phone": phone,
             "cl": cl,
         }
-        console.log(out);
-        console.log(uid);
-        /*axios.post(`http://localhost:5003/login/add`, out)
+        axios.post(`http://localhost:5003/login/add`, out)
         .catch(error => {
           this.setState({ errorMessage: error.message });
           console.error('There was an error!', error);
-      });*/
+        });
     }
 
     return(
@@ -65,6 +65,11 @@ const Admin = () => {
         <FormControl id="email" isRequired>
         <FormLabel>Email address</FormLabel>
         <Input type="email" placeholder="Email id" onChange={e => setemail(e.target.value)}/>
+        </FormControl>
+
+        <FormControl id="password" isRequired>
+        <FormLabel>Password</FormLabel>
+        <Input  placeholder="password" onChange={e => setpassword(e.target.value)}/>
         </FormControl>
 
         <FormControl id="Name" isRequired>

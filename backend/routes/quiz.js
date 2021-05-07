@@ -40,7 +40,7 @@ router.route('/quizcurr/current').get((req, res) => {
     {min='0'+min};
     var time = hr+":"+min
     today = yyyy+'/'+mm+"/"+dd;
-	Quiz.find({$and :[{"date":{$lte:today}},{"ftime":{$gte:time}},{"stime":{$lte: time}}]})
+	Quiz.find({$and :[{"date":{$eq:today}},{"ftime":{$gte:time}},{"stime":{$lte: time}}]})
 	.then(out => res.json(out))
 	.catch(err => res.status(400).json('Errors '+err));
 });

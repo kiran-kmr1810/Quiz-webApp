@@ -41,11 +41,11 @@ class App extends Component{
         <div className="App">
           {(() => {
         if (this.state.user) {
-          if(this.state.role === "faculty"){
+          if(this.state.role === "Faculty" || this.state.role === "faculty"){
             return (
               <Redirect to='/fhome'  />
           )}
-          else if (this.state.role === "student") {
+          else if (this.state.role === "Student" || this.state.role === "student") {
             return (
               <Redirect to='/shome'  />
             )

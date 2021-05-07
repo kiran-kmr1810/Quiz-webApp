@@ -3,8 +3,11 @@ import { Box, Center, Text, VStack} from '@chakra-ui/layout';
 import Profile from './components/profile';
 import { Button } from '@chakra-ui/button';
 import { useHistory } from "react-router-dom";
+import firebase from 'firebase';
 
-function About(){
+async function About() {
+    var uid =  await firebase.auth().currentUser.uid
+    console.log(uid);
     let history = useHistory();
     return (
         <div>
