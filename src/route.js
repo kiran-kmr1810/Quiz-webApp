@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import { BrowserRouter as Router , Switch , Route} from 'react-router-dom';
 import App from './App';
 import shome from './student/shome';
@@ -12,7 +12,10 @@ import Admin from './admin/admin';
 import Mark from './student/mark';
 
 
-function path(){
+function Path(){
+    useEffect(() => {
+        document.title = "Quizzy"
+      }, [])
     return (
         <Router>
             <div>
@@ -34,4 +37,4 @@ function path(){
     );
 }
 
-export default path;
+export default Path;

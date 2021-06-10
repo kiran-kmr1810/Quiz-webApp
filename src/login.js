@@ -4,14 +4,8 @@ import firebase from 'firebase';
 import { Button} from "@chakra-ui/react"
 import log from './Animation/log.svg'
 import Mod from './components/modal'
-import {
-    Box,
-    Flex,
-    Link,
-    FormControl,
-    FormLabel,
-    Input,
-    Stack,
+import { Box,Flex,FormControl,FormLabel,Input,
+    Stack,Alert,AlertIcon,AlertTitle
 } from '@chakra-ui/react'
 
 class Login extends Component{
@@ -20,6 +14,7 @@ state={
         email : "",
         password : "",
         role : "",
+        err : false,
 }
 
 constructor(props)
@@ -33,7 +28,7 @@ login(e){
     e.preventDefault();
     fire.auth().signInWithEmailAndPassword(this.state.email,this.state.password).then(async(u)=>
     {   
-        console.log(u)
+        //console.log(u)
         var uid =  await firebase.auth().currentUser.uid
         await fetch(`https://quizapp1810.herokuapp.com/login/uid/${uid}`)
         .then((response) => response.json()) 
@@ -42,7 +37,8 @@ login(e){
             this.props.loadrole();
         });
     }).catch((err)=>{
-        console.log(err);
+        this.setState({ err: true })
+        console.log(this.state.err);
     })
 }
 
@@ -56,7 +52,7 @@ handleChange(name,value){
 render()
 {
     return(
-        <div>
+        <div> 
             <Flex minHeight='94vh' width='full' align='center' justifyContent='space-around' bg="orange.600" >
             <Box >
             <img src={log} width = '500px' Height = '500px' />
@@ -92,14 +88,17 @@ render()
                 value={this.state.password}
                  />
             </FormControl>
-
+            { this.state.err ?
+                <Box paddingTop="10px">
+                    <Alert status="error">
+                        <AlertIcon />
+                        <AlertTitle mr={1}>Invalid Login!</AlertTitle>
+                    </Alert>
+                </Box> 
+            :null}
             <Stack isInline justifyContent='space-between' mt={4}>
-                {/*<Box>
-                    <Checkbox>Remember Me</Checkbox>
-                </Box>*/}
                 <Box>
                     <Mod/>
-                    {/*<Link color ="orange.400">Forgot your password?</Link>*/}
                 </Box>
             </Stack>
 
