@@ -26,7 +26,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "cypress open",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -48,6 +48,7 @@
     ]
   },
   "devDependencies": {
+    "cypress": "^7.5.0",
     "enzyme-adapter-react-17-updated": "^1.0.2"
   }
 }
