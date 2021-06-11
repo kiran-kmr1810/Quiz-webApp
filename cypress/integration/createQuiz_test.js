@@ -1,8 +1,8 @@
 describe("Faculty must be able to navigate to creation of  new quiz",()=>{
     it("Faculty Home Page rendered correctly",()=>{
+        cy.visit("/");
         cy.visit("/fhome");
         /* ==== Generated with Cypress Studio ==== */
-        cy.wait(5000)
         cy.get('.chakra-button').click();
         cy.url().should('contain','/createquiz')
         /* ==== End Cypress Studio ==== */
