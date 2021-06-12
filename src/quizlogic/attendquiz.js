@@ -1,13 +1,14 @@
 import React from "react";
 import Quizwindow from './quizwindow'
-import { Box, Center} from '@chakra-ui/layout';
+import { Box,Center} from '@chakra-ui/react'
 
 const Attendquiz = (props) =>
 {
     const k = props.location.aboutProps;
-    return(
+    
+    return(  
         <div>
-            <Box>
+            <Box maxH="200px">
             <Center>
             <Quizwindow 
             quiz = {k.questions} 
@@ -17,7 +18,7 @@ const Attendquiz = (props) =>
             date={k.date}
             />
             </Center>
-            </Box>
+            </Box> 
         </div>
       );
 }
