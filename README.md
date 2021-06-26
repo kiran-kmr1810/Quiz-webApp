@@ -4,8 +4,19 @@ Quizzy is web application created using ReactJS and nodeJS. Quizzy acts as a too
 
 # Tools used
 
-ReactJS , nodeJS , MongoDB , Firebase 
-Abode XD , Jira , Jenkins , Docker , Azure , Insomnia
+- ReactJS 
+- nodeJS
+- MongoDB
+- Firebase (for authentication)
+- Abode XD 
+- Jira tool 
+- Jenkins
+- Docker
+- Azure cloud
+- Insomnia
+- cypress
+- jest
+- mocha
 
 # Website Link
 
